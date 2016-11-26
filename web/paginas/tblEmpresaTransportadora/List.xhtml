@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblEmpresaTransportadoraEmpty}" rendered="#{tblEmpresaTransportadoraController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblEmpresaTransportadoraController.items.rowCount > 0}">
+                    <h:outputText value="#{tblEmpresaTransportadoraController.pagination.pageFirstItem + 1}..#{tblEmpresaTransportadoraController.pagination.pageLastItem + 1}/#{tblEmpresaTransportadoraController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblEmpresaTransportadoraController.previous}" value="#{bundle.Previous} #{tblEmpresaTransportadoraController.pagination.pageSize}" rendered="#{tblEmpresaTransportadoraController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblEmpresaTransportadoraController.next}" value="#{bundle.Next} #{tblEmpresaTransportadoraController.pagination.pageSize}" rendered="#{tblEmpresaTransportadoraController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblEmpresaTransportadoraController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_idEmpresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_nomEmpresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomEmpresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_nitEmpresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nitEmpresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_numContrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numContrato}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_categoriaEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categoriaEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_porcentajeParticipacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.porcentajeParticipacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEmpresaTransportadoraTitle_minCarro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minCarro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblEmpresaTransportadoraController.prepareView}" value="#{bundle.ListTblEmpresaTransportadoraViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblEmpresaTransportadoraController.prepareEdit}" value="#{bundle.ListTblEmpresaTransportadoraEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblEmpresaTransportadoraController.destroy}" value="#{bundle.ListTblEmpresaTransportadoraDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblEmpresaTransportadoraController.prepareCreate}" value="#{bundle.ListTblEmpresaTransportadoraCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblEmpresaTransportadoraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

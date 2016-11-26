@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblTanqueTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblTanqueEmpty}" rendered="#{tblTanqueController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblTanqueController.items.rowCount > 0}">
+                    <h:outputText value="#{tblTanqueController.pagination.pageFirstItem + 1}..#{tblTanqueController.pagination.pageLastItem + 1}/#{tblTanqueController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblTanqueController.previous}" value="#{bundle.Previous} #{tblTanqueController.pagination.pageSize}" rendered="#{tblTanqueController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblTanqueController.next}" value="#{bundle.Next} #{tblTanqueController.pagination.pageSize}" rendered="#{tblTanqueController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblTanqueController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblTanqueTitle_idTanque}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTanque}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblTanqueTitle_placaTanque}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.placaTanque}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblTanqueTitle_capacidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capacidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblTanqueTitle_condicionTanque}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.condicionTanque}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblTanqueTitle_estadoTanque}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadoTanque}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblTanqueController.prepareView}" value="#{bundle.ListTblTanqueViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblTanqueController.prepareEdit}" value="#{bundle.ListTblTanqueEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblTanqueController.destroy}" value="#{bundle.ListTblTanqueDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblTanqueController.prepareCreate}" value="#{bundle.ListTblTanqueCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblTanqueIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

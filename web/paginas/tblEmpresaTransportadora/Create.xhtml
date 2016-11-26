@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblEmpresaTransportadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_idEmpresa}" for="idEmpresa" />
+                    <h:inputText id="idEmpresa" value="#{tblEmpresaTransportadoraController.selected.idEmpresa}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_idEmpresa}" required="true" requiredMessage="#{bundle.CreateTblEmpresaTransportadoraRequiredMessage_idEmpresa}"/>
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_nomEmpresa}" for="nomEmpresa" />
+                    <h:inputText id="nomEmpresa" value="#{tblEmpresaTransportadoraController.selected.nomEmpresa}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_nomEmpresa}" />
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_nitEmpresa}" for="nitEmpresa" />
+                    <h:inputText id="nitEmpresa" value="#{tblEmpresaTransportadoraController.selected.nitEmpresa}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_nitEmpresa}" />
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_numContrato}" for="numContrato" />
+                    <h:inputText id="numContrato" value="#{tblEmpresaTransportadoraController.selected.numContrato}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_numContrato}" />
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_categoriaEmp}" for="categoriaEmp" />
+                    <h:inputText id="categoriaEmp" value="#{tblEmpresaTransportadoraController.selected.categoriaEmp}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_categoriaEmp}" />
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_porcentajeParticipacion}" for="porcentajeParticipacion" />
+                    <h:inputText id="porcentajeParticipacion" value="#{tblEmpresaTransportadoraController.selected.porcentajeParticipacion}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_porcentajeParticipacion}" />
+                    <h:outputLabel value="#{bundle.CreateTblEmpresaTransportadoraLabel_minCarro}" for="minCarro" />
+                    <h:inputText id="minCarro" value="#{tblEmpresaTransportadoraController.selected.minCarro}" title="#{bundle.CreateTblEmpresaTransportadoraTitle_minCarro}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblEmpresaTransportadoraController.create}" value="#{bundle.CreateTblEmpresaTransportadoraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblEmpresaTransportadoraController.prepareList}" value="#{bundle.CreateTblEmpresaTransportadoraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblEmpresaTransportadoraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

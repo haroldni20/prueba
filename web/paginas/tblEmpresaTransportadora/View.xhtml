@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_idEmpresa}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.idEmpresa}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_idEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_nomEmpresa}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.nomEmpresa}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_nomEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_nitEmpresa}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.nitEmpresa}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_nitEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_numContrato}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.numContrato}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_numContrato}"/>
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_categoriaEmp}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.categoriaEmp}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_categoriaEmp}"/>
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_porcentajeParticipacion}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.porcentajeParticipacion}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_porcentajeParticipacion}"/>
+                    <h:outputText value="#{bundle.ViewTblEmpresaTransportadoraLabel_minCarro}"/>
+                    <h:outputText value="#{tblEmpresaTransportadoraController.selected.minCarro}" title="#{bundle.ViewTblEmpresaTransportadoraTitle_minCarro}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblEmpresaTransportadoraController.destroyAndView}" value="#{bundle.ViewTblEmpresaTransportadoraDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblEmpresaTransportadoraEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblEmpresaTransportadoraController.prepareCreate}" value="#{bundle.ViewTblEmpresaTransportadoraCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblEmpresaTransportadoraController.prepareList}" value="#{bundle.ViewTblEmpresaTransportadoraShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblEmpresaTransportadoraIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

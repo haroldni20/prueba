@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblCabezotesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblCabezotesEmpty}" rendered="#{tblCabezotesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblCabezotesController.items.rowCount > 0}">
+                    <h:outputText value="#{tblCabezotesController.pagination.pageFirstItem + 1}..#{tblCabezotesController.pagination.pageLastItem + 1}/#{tblCabezotesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblCabezotesController.previous}" value="#{bundle.Previous} #{tblCabezotesController.pagination.pageSize}" rendered="#{tblCabezotesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblCabezotesController.next}" value="#{bundle.Next} #{tblCabezotesController.pagination.pageSize}" rendered="#{tblCabezotesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblCabezotesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCabezotesTitle_idCabezote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCabezote}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCabezotesTitle_placaCabezote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.placaCabezote}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCabezotesTitle_tipoCabezote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoCabezote}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCabezotesTitle_condicionCabezote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.condicionCabezote}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCabezotesTitle_estadoCabezote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadoCabezote}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblCabezotesController.prepareView}" value="#{bundle.ListTblCabezotesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblCabezotesController.prepareEdit}" value="#{bundle.ListTblCabezotesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblCabezotesController.destroy}" value="#{bundle.ListTblCabezotesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblCabezotesController.prepareCreate}" value="#{bundle.ListTblCabezotesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblCabezotesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

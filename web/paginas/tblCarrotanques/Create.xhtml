@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblCarrotanquesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblCarrotanquesLabel_idCarrotanque}" for="idCarrotanque" />
+                    <h:inputText id="idCarrotanque" value="#{tblCarrotanquesController.selected.idCarrotanque}" title="#{bundle.CreateTblCarrotanquesTitle_idCarrotanque}" required="true" requiredMessage="#{bundle.CreateTblCarrotanquesRequiredMessage_idCarrotanque}"/>
+                    <h:outputLabel value="#{bundle.CreateTblCarrotanquesLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{tblCarrotanquesController.selected.tipo}" title="#{bundle.CreateTblCarrotanquesTitle_tipo}" required="true" requiredMessage="#{bundle.CreateTblCarrotanquesRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.CreateTblCarrotanquesLabel_idTanque}" for="idTanque" />
+                    <h:inputText id="idTanque" value="#{tblCarrotanquesController.selected.idTanque}" title="#{bundle.CreateTblCarrotanquesTitle_idTanque}" />
+                    <h:outputLabel value="#{bundle.CreateTblCarrotanquesLabel_idCabezote}" for="idCabezote" />
+                    <h:selectOneMenu id="idCabezote" value="#{tblCarrotanquesController.selected.idCabezote}" title="#{bundle.CreateTblCarrotanquesTitle_idCabezote}" required="true" requiredMessage="#{bundle.CreateTblCarrotanquesRequiredMessage_idCabezote}">
+                        <f:selectItems value="#{tblCabezotesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblCarrotanquesLabel_idEmpresa}" for="idEmpresa" />
+                    <h:selectOneMenu id="idEmpresa" value="#{tblCarrotanquesController.selected.idEmpresa}" title="#{bundle.CreateTblCarrotanquesTitle_idEmpresa}" required="true" requiredMessage="#{bundle.CreateTblCarrotanquesRequiredMessage_idEmpresa}">
+                        <f:selectItems value="#{tblEmpresaTransportadoraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblCarrotanquesController.create}" value="#{bundle.CreateTblCarrotanquesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblCarrotanquesController.prepareList}" value="#{bundle.CreateTblCarrotanquesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblCarrotanquesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

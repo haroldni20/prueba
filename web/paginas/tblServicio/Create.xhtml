@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblServicioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_idGuia}" for="idGuia" />
+                    <h:inputText id="idGuia" value="#{tblServicioController.selected.idGuia}" title="#{bundle.CreateTblServicioTitle_idGuia}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_idGuia}"/>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_numSello}" for="numSello" />
+                    <h:inputText id="numSello" value="#{tblServicioController.selected.numSello}" title="#{bundle.CreateTblServicioTitle_numSello}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_numSello}"/>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_fechaCargue}" for="fechaCargue" />
+                    <h:inputText id="fechaCargue" value="#{tblServicioController.selected.fechaCargue}" title="#{bundle.CreateTblServicioTitle_fechaCargue}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_fechaCargue}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_horaCargue}" for="horaCargue" />
+                    <h:inputText id="horaCargue" value="#{tblServicioController.selected.horaCargue}" title="#{bundle.CreateTblServicioTitle_horaCargue}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_horaCargue}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_fechaDescargue}" for="fechaDescargue" />
+                    <h:inputText id="fechaDescargue" value="#{tblServicioController.selected.fechaDescargue}" title="#{bundle.CreateTblServicioTitle_fechaDescargue}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_horaDescargue}" for="horaDescargue" />
+                    <h:inputText id="horaDescargue" value="#{tblServicioController.selected.horaDescargue}" title="#{bundle.CreateTblServicioTitle_horaDescargue}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_brrlsBrutosCarga}" for="brrlsBrutosCarga" />
+                    <h:inputText id="brrlsBrutosCarga" value="#{tblServicioController.selected.brrlsBrutosCarga}" title="#{bundle.CreateTblServicioTitle_brrlsBrutosCarga}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_brrlsBrutosCarga}"/>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_brrlsNetosCarga}" for="brrlsNetosCarga" />
+                    <h:inputText id="brrlsNetosCarga" value="#{tblServicioController.selected.brrlsNetosCarga}" title="#{bundle.CreateTblServicioTitle_brrlsNetosCarga}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_brrlsNetosCarga}"/>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_brrlsBrutosDescarga}" for="brrlsBrutosDescarga" />
+                    <h:inputText id="brrlsBrutosDescarga" value="#{tblServicioController.selected.brrlsBrutosDescarga}" title="#{bundle.CreateTblServicioTitle_brrlsBrutosDescarga}" />
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_brrlsNetosDescarga}" for="brrlsNetosDescarga" />
+                    <h:inputText id="brrlsNetosDescarga" value="#{tblServicioController.selected.brrlsNetosDescarga}" title="#{bundle.CreateTblServicioTitle_brrlsNetosDescarga}" />
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_idCarrotanque}" for="idCarrotanque" />
+                    <h:selectOneMenu id="idCarrotanque" value="#{tblServicioController.selected.idCarrotanque}" title="#{bundle.CreateTblServicioTitle_idCarrotanque}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_idCarrotanque}">
+                        <f:selectItems value="#{tblCarrotanquesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_idIdentificacion}" for="idIdentificacion" />
+                    <h:selectOneMenu id="idIdentificacion" value="#{tblServicioController.selected.idIdentificacion}" title="#{bundle.CreateTblServicioTitle_idIdentificacion}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_idIdentificacion}">
+                        <f:selectItems value="#{tblConductoresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_idProducto}" for="idProducto" />
+                    <h:selectOneMenu id="idProducto" value="#{tblServicioController.selected.idProducto}" title="#{bundle.CreateTblServicioTitle_idProducto}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_idProducto}">
+                        <f:selectItems value="#{tblProductoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblServicioLabel_idProgramacion}" for="idProgramacion" />
+                    <h:selectOneMenu id="idProgramacion" value="#{tblServicioController.selected.idProgramacion}" title="#{bundle.CreateTblServicioTitle_idProgramacion}" required="true" requiredMessage="#{bundle.CreateTblServicioRequiredMessage_idProgramacion}">
+                        <f:selectItems value="#{tblProgramacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblServicioController.create}" value="#{bundle.CreateTblServicioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblServicioController.prepareList}" value="#{bundle.CreateTblServicioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblServicioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

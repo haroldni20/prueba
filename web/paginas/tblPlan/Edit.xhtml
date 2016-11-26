@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblPlanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblPlanLabel_idPlan}" for="idPlan" />
+                    <h:inputText id="idPlan" value="#{tblPlanController.selected.idPlan}" title="#{bundle.EditTblPlanTitle_idPlan}" required="true" requiredMessage="#{bundle.EditTblPlanRequiredMessage_idPlan}"/>
+                    <h:outputLabel value="#{bundle.EditTblPlanLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{tblPlanController.selected.fechaCreacion}" title="#{bundle.EditTblPlanTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.EditTblPlanRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTblPlanLabel_vigencia}" for="vigencia" />
+                    <h:inputText id="vigencia" value="#{tblPlanController.selected.vigencia}" title="#{bundle.EditTblPlanTitle_vigencia}" required="true" requiredMessage="#{bundle.EditTblPlanRequiredMessage_vigencia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTblPlanLabel_observaciones}" for="observaciones" />
+                    <h:inputTextarea rows="4" cols="30" id="observaciones" value="#{tblPlanController.selected.observaciones}" title="#{bundle.EditTblPlanTitle_observaciones}" />
+                    <h:outputLabel value="#{bundle.EditTblPlanLabel_idRuta}" for="idRuta" />
+                    <h:selectOneMenu id="idRuta" value="#{tblPlanController.selected.idRuta}" title="#{bundle.EditTblPlanTitle_idRuta}" required="true" requiredMessage="#{bundle.EditTblPlanRequiredMessage_idRuta}">
+                        <f:selectItems value="#{tblRutaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tblPlanController.update}" value="#{bundle.EditTblPlanSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblPlanViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblPlanController.prepareList}" value="#{bundle.EditTblPlanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblPlanIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblPlanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblPlanLabel_idPlan}"/>
+                    <h:outputText value="#{tblPlanController.selected.idPlan}" title="#{bundle.ViewTblPlanTitle_idPlan}"/>
+                    <h:outputText value="#{bundle.ViewTblPlanLabel_fechaCreacion}"/>
+                    <h:outputText value="#{tblPlanController.selected.fechaCreacion}" title="#{bundle.ViewTblPlanTitle_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTblPlanLabel_vigencia}"/>
+                    <h:outputText value="#{tblPlanController.selected.vigencia}" title="#{bundle.ViewTblPlanTitle_vigencia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTblPlanLabel_observaciones}"/>
+                    <h:outputText value="#{tblPlanController.selected.observaciones}" title="#{bundle.ViewTblPlanTitle_observaciones}"/>
+                    <h:outputText value="#{bundle.ViewTblPlanLabel_idRuta}"/>
+                    <h:outputText value="#{tblPlanController.selected.idRuta}" title="#{bundle.ViewTblPlanTitle_idRuta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblPlanController.destroyAndView}" value="#{bundle.ViewTblPlanDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblPlanEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblPlanController.prepareCreate}" value="#{bundle.ViewTblPlanCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblPlanController.prepareList}" value="#{bundle.ViewTblPlanShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblPlanIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

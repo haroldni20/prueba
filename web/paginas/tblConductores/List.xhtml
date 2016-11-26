@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblConductoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblConductoresEmpty}" rendered="#{tblConductoresController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblConductoresController.items.rowCount > 0}">
+                    <h:outputText value="#{tblConductoresController.pagination.pageFirstItem + 1}..#{tblConductoresController.pagination.pageLastItem + 1}/#{tblConductoresController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblConductoresController.previous}" value="#{bundle.Previous} #{tblConductoresController.pagination.pageSize}" rendered="#{tblConductoresController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblConductoresController.next}" value="#{bundle.Next} #{tblConductoresController.pagination.pageSize}" rendered="#{tblConductoresController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblConductoresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblConductoresTitle_idIdentificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idIdentificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblConductoresTitle_tipoDocumentoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDocumentoId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblConductoresTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblConductoresTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblConductoresTitle_celular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.celular}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblConductoresController.prepareView}" value="#{bundle.ListTblConductoresViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblConductoresController.prepareEdit}" value="#{bundle.ListTblConductoresEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblConductoresController.destroy}" value="#{bundle.ListTblConductoresDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblConductoresController.prepareCreate}" value="#{bundle.ListTblConductoresCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblConductoresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

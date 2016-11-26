@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblConductoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblConductoresLabel_idIdentificacion}" for="idIdentificacion" />
+                    <h:inputText id="idIdentificacion" value="#{tblConductoresController.selected.idIdentificacion}" title="#{bundle.EditTblConductoresTitle_idIdentificacion}" required="true" requiredMessage="#{bundle.EditTblConductoresRequiredMessage_idIdentificacion}"/>
+                    <h:outputLabel value="#{bundle.EditTblConductoresLabel_tipoDocumentoId}" for="tipoDocumentoId" />
+                    <h:inputText id="tipoDocumentoId" value="#{tblConductoresController.selected.tipoDocumentoId}" title="#{bundle.EditTblConductoresTitle_tipoDocumentoId}" required="true" requiredMessage="#{bundle.EditTblConductoresRequiredMessage_tipoDocumentoId}"/>
+                    <h:outputLabel value="#{bundle.EditTblConductoresLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tblConductoresController.selected.nombre}" title="#{bundle.EditTblConductoresTitle_nombre}" required="true" requiredMessage="#{bundle.EditTblConductoresRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditTblConductoresLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{tblConductoresController.selected.apellido}" title="#{bundle.EditTblConductoresTitle_apellido}" required="true" requiredMessage="#{bundle.EditTblConductoresRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.EditTblConductoresLabel_celular}" for="celular" />
+                    <h:inputText id="celular" value="#{tblConductoresController.selected.celular}" title="#{bundle.EditTblConductoresTitle_celular}" />
+                </h:panelGrid>
+                <h:commandLink action="#{tblConductoresController.update}" value="#{bundle.EditTblConductoresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblConductoresViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblConductoresController.prepareList}" value="#{bundle.EditTblConductoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblConductoresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
